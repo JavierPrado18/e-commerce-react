@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card, Col, Offcanvas, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartThunk, purchaseCartThunk, setCart } from "../store/slices/cart.slice";
+import { deleteProductThunk, getCartThunk, purchaseCartThunk, setCart } from "../store/slices/cart.slice";
 
 const Cart = ({ show, handleClose }) => {
   const cart=useSelector(state=>state.cart)
@@ -37,6 +37,7 @@ const Cart = ({ show, handleClose }) => {
                 
               <Col className="text-end">
               <Button onClick={()=>{
+                dispatch(deleteProductThunk(product.productsInCart.productId))
                 }
               } ><i className="fa-solid fa-trash"></i></Button>
               </Col>
@@ -52,7 +53,10 @@ const Cart = ({ show, handleClose }) => {
       
       </Offcanvas.Body> 
       <Offcanvas.Body className="h-25 d-flex justify-content-center align-items-center">
-          <Button className="w-75" onClick={()=>dispatch(purchaseCartThunk())}>Checkout</Button>
+          <Button className="w-75" onClick={()=>{
+              dispatch(purchaseCartThunk())
+              handleClose()
+            }} >Checkout</Button>
         </Offcanvas.Body> 
       
     </Offcanvas>

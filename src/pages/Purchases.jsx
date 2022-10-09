@@ -35,9 +35,11 @@ const Purchases = () => {
               {event.toLocaleDateString("en-US", options)}
             </Card.Header>
             <Card.Body>
+              <ul>
               {purchase.cart.products.map((product) => (
-                <Card.Text key={product.id} onClick={()=>navigate(`/product/${product.id}`)}>{product.title}</Card.Text>
+                <li className="product-purchase" key={product.id} onClick={()=>navigate(`/product/${product.id}`)}>{product.title}</li>
               ))}
+              </ul>
             </Card.Body>
           </Card>
         );

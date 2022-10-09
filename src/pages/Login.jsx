@@ -12,17 +12,16 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const submit = (data) => {
-    console.log(data);
-
     axios
       .post(
         "https://ecommerce-api-react.herokuapp.com/api/v1/users/login",
         data
       )
       .then((res) => {
-        alert("log in");
-        console.log(res.data.data.token);
+        alert(`Welcome ${res.data.data.user.firstName}`);
         localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("user", res.data.data.user.firstName);
+        localStorage.setItem("lastName", res.data.data.user.lastName);
         navigate("/")
         dispatch(setIslogin(true));
       })

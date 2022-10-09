@@ -34,6 +34,11 @@ export const purchaseCartThunk = () => (dispatch) => {
         .then(() => dispatch(setCart([])))
         .finally(() => dispatch(setIsLoading(false)));
 }
-
+export const deleteProductThunk = (productId) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.delete(`https://ecommerce-api-react.herokuapp.com/api/v1/cart/${productId}`,getConfig())
+        .then(() => dispatch(getCartThunk()))
+        .finally(() => dispatch(setIsLoading(false)));
+}
 
 export default cartSlice.reducer;

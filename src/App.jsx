@@ -1,4 +1,4 @@
-
+import "./App.css"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashRouter, Route, Routes } from "react-router-dom";
@@ -24,7 +24,7 @@ function App() {
   useEffect(()=>{
     dispatch(getProductsTunk())
 
-    if(localStorage.getItem("token")==""){
+    if(localStorage.getItem("token")=="" || localStorage.getItem("token")==null ){
       dispatch(setIslogin(false))
       
     }else{

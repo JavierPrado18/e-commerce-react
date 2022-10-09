@@ -7,8 +7,15 @@ const ProductCard = ({product}) => {
     return (
         
         <Col>    
-          <Card onClick={()=>navigate(`/product/${product.id}`)}>
-            <Card.Img variant="top" src={product.productImgs?.[0]} className="p-1" style={{height:"100px",objectFit:"contain"}}/>
+          <Card className='card-product' onClick={()=>{
+            navigate(`/product/${product.id}`)
+            window.scroll({
+              top: 0,
+              behavior: 'smooth'
+            });
+            }
+            }>
+            <Card.Img variant="top" src={product.productImgs?.[0]}      className="p-1" style={{height:"100px",objectFit:"contain"}}/>
             <hr/>
             <Card.Body  className='text-center'>
                 <Card.Title className='mb-4'>{product.title}</Card.Title>

@@ -61,9 +61,10 @@ const Home = () => {
               <Accordion.Body>
                 {categories.map((category) => (
                   <p
+                    className="product-purchase"
                     key={category.id}
                     onClick={() => filterCategory(category.id)}
-                    style={{ listStyle: "none" }}
+                   
                   >
                     {category.name}
                   </p>

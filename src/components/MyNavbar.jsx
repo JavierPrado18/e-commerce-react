@@ -46,16 +46,23 @@ const MyNavbar = () => {
           >
             <Offcanvas.Header closeButton onClick={()=>setNavShow(false)}>
               <Offcanvas.Title>
-                <i className="fa-solid fa-shop"> e-commerce</i>
+                <i className="fa-solid fa-shop"> E-commerce </i>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
+             {navShow && (
+              <>
+                <h2 className="text-center"><i className="fa-solid fa-user-tie"></i></h2>
+                <h4 className="text-center"> {localStorage.getItem("user")} {localStorage.getItem("lastName")}</h4>
+                <hr />
+              </>
+             )} 
               <Nav className=" justify-content-end flex-grow-1 pe-3">
                 {isLogin ? (
                   <Nav.Link to="/login" as={Link} className="" onClick={logout}>
                     <i className="fa-solid fa-arrow-right-from-bracket">
                       {" "}
-                      log out
+                      log out 
                     </i>
                   </Nav.Link>
                 ) : (
