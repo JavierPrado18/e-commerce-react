@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
@@ -20,6 +19,9 @@ const Home = () => {
   // categories
   const [categories, setCategories] = useState([]);
   const [productsFiltered, setProductsFiltered] = useState([]);
+  //filter price
+  const [priceStart,setPriceStart]=useState("")
+  const[priceEnd,setPriceEnd]=useState("")
 
   //Search product
   const [searchProduct, setSearchProduct] = useState("");
@@ -49,8 +51,13 @@ const Home = () => {
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(searchProduct.toLowerCase())
     );
-    setProductsFiltered(filtered);
+    setProductsFiltered(filtered);  
   };
+  const filterPrice=(star,end)=>{
+    const filtered = productsFiltered.filter((product) => Number(star)<=product.price && product.price<=Number(end));
+    setProductsFiltered(filtered);
+  }
+
   return (
     <Row style={{ marginTop: "100px" }} className="mx-0">
       <Col md={3} className="">
@@ -74,7 +81,31 @@ const Home = () => {
 
             <Accordion.Item eventKey="1">
               <Accordion.Header>Price</Accordion.Header>
-              <Accordion.Body>price</Accordion.Body>
+              <Accordion.Body >
+                <div>
+                  <label className="w-25" htmlFor="from">From:</label>
+                    <input 
+                      type="number" 
+                      id="from" 
+                      className="w-50"
+                      value={priceStart}
+                      onChange={(e)=>setPriceStart(e.target.value)}
+                      />
+                  </div>
+                  <div className="my-3">
+                    <label className="w-25" htmlFor="to">To:</label>
+                    <input 
+                      type="number" 
+                      id="to" 
+                      className="w-50"
+                      value={priceEnd}
+                      onChange={(e)=>setPriceEnd(e.target.value)}
+                      />
+                  </div>
+                  <div className="text-end">
+                  <Button onClick={()=>filterPrice(priceStart,priceEnd)}  >Filter price</Button>
+                  </div>
+              </Accordion.Body>
             </Accordion.Item>
           </Container>
         </Accordion>
