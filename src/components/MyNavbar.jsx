@@ -16,6 +16,8 @@ const MyNavbar = () => {
     localStorage.setItem("token", "");
     dispatch(setIslogin(false));
     setNavShow(false)
+    localStorage.setItem("user", "");
+    localStorage.setItem("lastName", "");
 
   };
 

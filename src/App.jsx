@@ -11,13 +11,14 @@ import ProtectedRoutes from "./pages/ProtectedRoutes";
 import Purchases from "./pages/Purchases";
 import { setIslogin } from "./store/slices/isLogin.slice";
 import { getProductsTunk } from "./store/slices/products.slice";
+import SignIn from "./pages/SignIn";
 
 
 
 function App() {
   
   const isLoading=useSelector(state=>state.isLoading)
-  const purchases=useSelector(state=>state.purchases)
+
   const dispatch=useDispatch()
   
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/product/:id" element={<ProductDetail/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
         <Route element={<ProtectedRoutes/>}>
           <Route path="/purchases" element={<Purchases/>}/>
         </Route>

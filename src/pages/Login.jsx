@@ -3,7 +3,7 @@ import React from "react";
 import {Button, Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setIslogin } from "../store/slices/isLogin.slice";
 
 const Login = () => {
@@ -40,7 +40,7 @@ const Login = () => {
     >
       
       <Form onSubmit={handleSubmit(submit)} className="">
-        <h2 className="text-center fw-bold"><i>Log-in</i></h2>
+        <h2 className="fw-bold"><i>Log in </i></h2>
         <Card
           bg="info"
           text='white'
@@ -56,7 +56,7 @@ const Login = () => {
           </Card.Body>
         </Card>
         <Form.Group
-          className="my-3 "
+          className="my-2 "
           style={{ width: "400px" }}
           controlId="formBasicEmail"
         >
@@ -87,9 +87,12 @@ const Login = () => {
         </Form.Group>
 
         <Button variant="primary" type="submit" className="w-100">
-          Log in
+          Continue
         </Button>
+        
+        <p className="my-2 ">Don't have an account? <Link to="/signin">Sign up</Link> </p>
       </Form>
+      
     </Container>
   );
 };

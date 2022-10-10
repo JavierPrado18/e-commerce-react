@@ -16,6 +16,7 @@ const ProductDetail = () => {
 
   const [index, setIndex] = useState(0);
   const [amount, setAmount] = useState(1);
+  const navigate=useNavigate()
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
@@ -24,7 +25,11 @@ const ProductDetail = () => {
       id: id,
       quantity: amount,
     };
-    dispatch(addProductThunk(product));
+    if (localStorage.getItem("token")!==""){
+      dispatch(addProductThunk(product));
+    }else{
+      navigate("/login")
+    }
   };
   useEffect(() => {
     setAmount(1);

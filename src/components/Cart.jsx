@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card, Col, Offcanvas, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProductThunk, getCartThunk, purchaseCartThunk, setCart } from "../store/slices/cart.slice";
+import { deleteProductThunk, getCartThunk, purchaseCartThunk,  } from "../store/slices/cart.slice";
 
 const Cart = ({ show, handleClose }) => {
   const cart=useSelector(state=>state.cart)
