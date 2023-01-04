@@ -29,7 +29,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "https://ecommerce-api-react.herokuapp.com/api/v1/products/categories"
+        "https://e-commerce-api.academlo.tech/products/categories"
       )
       .then((res) => setCategories(res.data.data.categories));
     

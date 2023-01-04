@@ -9,7 +9,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const submit = (data) => {
     axios
-      .post("https://ecommerce-api-react.herokuapp.com/api/v1/users", data)
+      .post("https://e-commerce-api.academlo.tech/users", data)
       .then((res) => {
         alert("user created");
         navigate("/login")

@@ -15,7 +15,7 @@ export const productsSlice = createSlice({
 export const { setProducts } = productsSlice.actions;
 export const getProductsTunk=()=>dispatch=>{
     dispatch(setIsLoading(true))
-    axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/products")
+    axios.get("https://e-commerce-api.academlo.tech/products")
         .then(res=>dispatch(setProducts(res.data.data.products)))
         .finally(()=>dispatch(setIsLoading(false))
         )
