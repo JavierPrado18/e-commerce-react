@@ -9,7 +9,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const submit = (data) => {
     axios
-      .post("https://e-commerce-api.academlo.tech/users", data)
+      .post("https://e-commerce-api.academlo.tech/api/v1/users", data)
       .then((res) => {
         alert("user created");
         navigate("/login")
